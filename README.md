@@ -1,2 +1,2 @@
-# QSettingJson
+# QSettingsJson
 Json Formatter for QSettings
