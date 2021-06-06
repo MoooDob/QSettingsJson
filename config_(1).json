@@ -1,0 +1,22 @@
+{
+	"test1" : {
+		"test1.1" : "v_test1.1",
+		"test1.2" : "v_test1.1",
+		"emptyarraytest": [],
+		"subobject": {
+			"yes": true,
+			"no" : "non"
+		}
+	},
+	"myArray" : [
+		"asd",
+		45,
+		{},
+		null,
+		"long\r\nmultiline \r\ntext",
+		{
+			"yes": true,
+			"no" : "pas du tout"
+		}
+	]
+}
