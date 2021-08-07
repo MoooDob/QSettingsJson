@@ -21,6 +21,13 @@ static const QSettings::Format JsonFormat = QSettings::registerFormat("JsonForma
 // -------------------- Reading -------------------------
 
 
+QVariant encode(QVariant value){
+
+    if (value.isNull()) return value;
+
+};
+
+
 bool parseJsonArray(const QJsonArray &jsonArray, QString prefix, QSettings::SettingsMap &map){
     int arr_ctr=0;
     if (! jsonArray.isEmpty()) {
@@ -72,7 +79,7 @@ bool parseJsonValue(const QString &jsonKey, const QJsonValue &jsonValue, QString
     }
     else
     {
-        map.insert(prefix + jsonKey, jsonValue.toVariant());
+        map.insert(prefix + jsonKey, encode(jsonValue.toVariant()));
     }
     return true;
 }
@@ -108,6 +115,14 @@ bool readSettingsJson(QIODevice &device, QSettings::SettingsMap &map)
 // -------------------- Writing -------------------------
 
 
+
+QVariant decode(QVariant value){
+
+    if (value.isNull()) return value;
+
+};
+
+
 QJsonValue restoreJsonSimpleValue(QSettings::SettingsMap &map, QStringList &keysWL, QStringList &sections, QVariant &value)
 {
     QJsonValue jsonValue;
@@ -115,7 +130,7 @@ QJsonValue restoreJsonSimpleValue(QSettings::SettingsMap &map, QStringList &keys
     if (value.isNull()) {
         jsonValue = QJsonValue();
     } else {
-        jsonValue = QJsonValue::fromVariant(value);
+        jsonValue = QJsonValue::fromVariant(decode(value));
     }
 
     keysWL.removeFirst();
